@@ -6,8 +6,10 @@ function crearefisier() {
     }
 },);
 
+var spreadsheetId;
 merge.then(function(response) { // aici primesc raspuns cu datele generate
   // TODO: Change code below to process the `response` object:
+  spreadsheetId = response.result.spreadsheetId;
   console.log(response.result.spreadsheetId); // ASTA e IMPORTANT - e imi da ID-ul Spreadsheet-ului creat ce tb sa fie facut variabila ca sa-l trec mai jos
 }, function(reason) {
   //console.error('error: ' + reason.result.error.message);
@@ -20,7 +22,7 @@ merge.then(function(response) { // aici primesc raspuns cu datele generate
   };
 
   var copySheetToAnotherSpreadsheetRequestBody = {
-    destinationSpreadsheetId: , // aici trebuie sa apelez variabila de mai sus.
+    destinationSpreadsheetId: spreadsheetId, // aici trebuie sa apelez variabila de mai sus.
   };
 
   var request = gapi.client.sheets.spreadsheets.sheets.copyTo(params, copySheetToAnotherSpreadsheetRequestBody);
